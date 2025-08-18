@@ -5,12 +5,13 @@
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
+		"bicheck": "astro check && astro build",
 		"preview": "astro preview",
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/preact": "^4.1.0",
 		"@astrojs/rss": "^4.0.12",
+		"@astrojs/sitemap": "^3.5.0",
 		"astro": "^5.13.2",
 		"preact": "^10.27.0"
 	}
