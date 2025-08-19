@@ -8,4 +8,7 @@ export default defineConfig({
 	site: "https://iznanka.netlify.app/",
 	base: "/",
 	integrations: [sitemap()],
+	vite: {
+		plugins: [],
+	},
 });
