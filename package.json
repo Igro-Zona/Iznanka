@@ -9,15 +9,18 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"css": "stylelint '**/*.{css,scss,astro}'",
-		"cssfix": "stylelint '**/*.{css,scss,astro}' --fix"
+		"cssfix": "stylelint '**/*.{css,scss,astro}' --fix",
+		"f": "prettier --write .",
+		"form": "prettier --check ."
 	},
 	"dependencies": {
 		"@astrojs/rss": "^4.0.12",
 		"@astrojs/sitemap": "^3.5.0",
 		"astro": "^5.13.2",
-		"sass-embedded": "^1.90.0",
 		"postcss-html": "^1.8.0",
 		"postcss-scss": "^4.0.9",
+		"prettier": "^3.6.2",
+		"sass-embedded": "^1.90.0",
 		"stylelint-order": "^7.0.0",
 		"stylelint-scss": "^6.12.1"
 	}

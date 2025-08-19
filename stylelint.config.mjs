@@ -161,7 +161,11 @@ export default {
 		"layer-name-pattern": ["^([a-z][a-z0-9]*)(-[a-z0-9]+)*$"],
 		"length-zero-no-unit": [
 			true,
-			{ ignore: ["custom-properties"], ignorePreludeOfAtRules: ["function", "mixin"], severity: "warning" },
+			{
+				ignore: ["custom-properties"],
+				ignorePreludeOfAtRules: ["function", "mixin"],
+				severity: "warning",
+			},
 		],
 		"lightness-notation": ["percentage", { severity: "warning" }],
 		"max-nesting-depth": null,

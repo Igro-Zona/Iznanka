@@ -1,0 +1,35 @@
+/** @type {import("prettier").Config} */
+export default {
+	printWidth: 120,
+	tabWidth: 4,
+	useTabs: true,
+	semi: true,
+	singleQuote: false,
+	quoteProps: "consistent",
+	jsxSingleQuote: false,
+	trailingComma: "all",
+	bracketSpacing: true,
+	objectWrap: "preserve",
+	bracketSameLine: false,
+	arrowParens: "always",
+	rangeStart: 0,
+	rangeEnd: Infinity,
+	// parser: null,
+	requirePragma: false,
+	insertPragma: false,
+	checkIgnorePragma: false,
+	proseWrap: "always",
+	htmlWhitespaceSensitivity: "css",
+	vueIndentScriptAndStyle: false,
+	endOfLine: "lf",
+	embeddedLanguageFormatting: "auto",
+	singleAttributePerLine: true,
+	overrides: [
+		{
+			files: "*.astro",
+			options: {
+				// parser: "astro",
+			},
+		},
+	],
+};
