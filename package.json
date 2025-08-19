@@ -2,6 +2,11 @@
 	"name": "iznanka",
 	"type": "module",
 	"version": "1.0.0",
+	"browserslist": [
+		">0.5%",
+		"last 8 versions",
+		"not dead"
+	],
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
@@ -18,6 +23,9 @@
 		"@astrojs/sitemap": "^3.5.0",
 		"astro": "^5.13.2",
 		"postcss-html": "^1.8.0",
+		"postcss-load-config": "^6.0.1",
+		"postcss-preset-env": "^10.2.4",
+		"postcss-pxtorem": "^6.1.0",
 		"postcss-scss": "^4.0.9",
 		"prettier-plugin-astro": "^0.14.1",
 		"sass-embedded": "^1.90.0",
