@@ -1,0 +1,26 @@
+---
+import "/src/styles/main.scss";
+import Head from "@elements/Head.astro";
+
+interface Props {
+	lang: string;
+	title: string;
+}
+
+const { lang, title } = Astro.props as Props;
+---
+
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<Head />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

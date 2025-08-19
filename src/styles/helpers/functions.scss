@@ -1,0 +1,10 @@
+@use "sass:math";
+
+@function fluid($max-size: 100, $min-size: 14) {
+	$max-width: 1920;
+	$min-width: 390;
+	$slope: math.div(($max-size - $min-size), ($max-width - $min-width));
+	$y-axis-intersection: -$min-width * $slope + $min-size;
+
+	@return clamp(#{$min-size * 1px}, #{$y-axis-intersection * 1px} + #{$slope * 100vw}, #{$max-size * 1px});
+}

@@ -1,8 +1,11 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-const pageTitle = "Home Page";
+import MainLayout from "@layouts/MainLayout.astro";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-	<h2>My awesome blog subtitle</h2>
-</BaseLayout>
+<MainLayout
+	lang="ru"
+	title="Изнанка | Главная страница"
+>
+	<h1 class="h2">Astro</h1>
+	<p>Hola</p>
+</MainLayout>

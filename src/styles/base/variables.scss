@@ -1,0 +1,19 @@
+:root {
+	--bg-light: hsl(60deg 76% 97%);
+	--bg-dark: hsl(60deg 37% 93%);
+	--absolute-black: hsl(0deg 0% 0%);
+	--absolute-white: hsl(0deg 0% 100%);
+	--text-dark: hsl(0deg 4% 5%);
+	--text-dark-grey: hsl(220deg 43% 11%);
+	--text-grey: hsl(221deg 13% 46%);
+	--text-yellow: hsl(36deg 88% 57%);
+	--font-family-base: "Nunito", sans-serif;
+	--font-family-accent: "WorkSans", sans-serif;
+	--border: 2px hsl(0deg 0% 0%) solid;
+	--border-grey: 1px hsl(0deg 4% 5% / 0.23) solid;
+	--wrapper-width: 1820px;
+	--wrapper-padding-x: 16px;
+	--inner-width: 1420px;
+	--inner-padding-x: 16px;
+	--transition-duration: 0.2s;
+}

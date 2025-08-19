@@ -2,5 +2,15 @@
 	"extends": "astro/tsconfigs/strict",
 	"include": [".astro/types.d.ts", "**/*"],
 	"exclude": ["dist"],
-	"compilerOptions": {}
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@": ["src/*"],
+			"@assets/*": ["src/assets/*"],
+			"@blocs/*": ["src/blocs/*"],
+			"@components/*": ["src/blocs/components/*"],
+			"@elements/*": ["src/blocs/elements/*"],
+			"@layouts/*": ["src/blocs/layouts/*"]
+		}
+	}
 }

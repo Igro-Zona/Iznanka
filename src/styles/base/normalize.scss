@@ -1,0 +1,128 @@
+html {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	scrollbar-gutter: stable;
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	display: inline-block;
+	background-color: transparent;
+	color: inherit;
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+img,
+video {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+picture {
+	display: block;
+}
+
+b,
+strong {
+	font-weight: 600;
+}
+
+fieldset,
+table,
+iframe,
+button,
+input,
+optgroup,
+select,
+textarea {
+	border: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	font: inherit;
+}
+
+button,
+input {
+	text-overflow: ellipsis;
+}
+
+button,
+select {
+	text-transform: none;
+}
+
+button,
+label {
+	cursor: pointer;
+}
+
+[type="checkbox"],
+[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+
+::-webkit-file-upload-button {
+	font: inherit;
+}
+
+legend {
+	display: table;
+	max-width: 100%;
+	color: inherit;
+	white-space: normal;
+}
+
+textarea {
+	overflow: auto;
+	resize: none;
+}
+
+address {
+	font-style: normal;
+}
+
+:where([fill]:not([fill="none"], [fill^="url"])) {
+	fill: currentcolor;
+}
+
+:where([stroke]:not([stroke="none"], [stroke^="url"])) {
+	stroke: currentcolor;
+}
+
+svg * {
+	transition-property: fill, stroke;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	::before,
+	::after {
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		scroll-behavior: auto !important;
+	}
+}
