@@ -9,6 +9,11 @@
 	padding-inline: var(--wrapper-padding-x);
 }
 
+.no-transition,
+.no-transition * {
+	transition: none !important;
+}
+
 .visually-hidden {
 	@include visually-hidden;
 }

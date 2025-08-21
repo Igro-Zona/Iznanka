@@ -5,6 +5,7 @@ import LogoIcon from "@svg/logo.svg";
 
 <header
 	class="header"
+	aria-label="Header"
 	data-js-header=""
 >
 	<div class="header__wrapper wrapper">
@@ -13,6 +14,7 @@ import LogoIcon from "@svg/logo.svg";
 			href="/"
 			title="Home"
 			aria-label="Home"
+			data-js-header-home-button=""
 		>
 			<LogoIcon
 				width={106}
@@ -21,11 +23,25 @@ import LogoIcon from "@svg/logo.svg";
 				aria-label={"Whirl Logo"}
 			/></a
 		>
+		<button
+			type="button"
+			class="header__burger visible-mobile"
+			title="Open menu"
+			aria-label="Open menu"
+			aria-controls="header-overlay"
+			data-js-header-button=""
+		>
+			<span class="header__burger-line"></span>
+			<span class="header__burger-line"></span>
+			<span class="header__burger-line"></span>
+		</button>
 		<div
 			class="header__overlay"
+			id="header-overlay"
+			aria-label="Header menu"
 			data-js-header-overlay=""
 		>
-			<nav>
+			<nav aria-label="Header navigation">
 				<ul class="header__list">
 					<li><a href="#!">Features</a></li>
 					<li><a href="#!">Pricing</a></li>
@@ -42,15 +58,6 @@ import LogoIcon from "@svg/logo.svg";
 				<BlueButton url="#!">Book a demo</BlueButton>
 			</div>
 		</div>
-		<button
-			type="button"
-			class="header__burger visible-mobile"
-			data-js-header-button=""
-		>
-			<span class="header__burger-line"></span>
-			<span class="header__burger-line"></span>
-			<span class="header__burger-line"></span>
-		</button>
 	</div>
 </header>
 
@@ -58,7 +65,11 @@ import LogoIcon from "@svg/logo.svg";
 	@use "@styles/helpers" as *;
 
 	.header {
+		position: fixed;
+		width: 100%;
+		border-bottom: 1px solid var(--color-white-400);
 		padding-block: 20px;
+		background-color: var(--color-white-100);
 
 		&__wrapper {
 			display: flex;
@@ -131,7 +142,7 @@ import LogoIcon from "@svg/logo.svg";
 			justify-content: space-between;
 			padding: 8.5px 4.25px;
 
-			@include square(40px);
+			@include square(36px);
 
 			&-line {
 				width: 100%;
@@ -148,12 +159,12 @@ import LogoIcon from "@svg/logo.svg";
 
 			&.is-active .header__burger-line {
 				&:first-child {
-					transform: rotate(45deg) translateY(-0.2em) translateX(0.2em);
+					transform: rotate(45deg) translateY(-0.28em) translateX(0.1em);
 					transform-origin: 0;
 				}
 
 				&:nth-child(2) {
-					transform: rotate(-45deg);
+					transform: rotate(-43deg);
 				}
 
 				&:last-child {
@@ -171,29 +182,89 @@ import LogoIcon from "@svg/logo.svg";
 			overlay: "[data-js-header-overlay]",
 			button: "[data-js-header-button]",
 		};
+		selectorsExternal = {
+			main: "[data-js-main]",
+			footer: "[data-js-footer]",
+			home: "[data-js-header-home-button",
+		};
 		stateClasses = {
 			isActive: "is-active",
 			isLock: "is-lock",
 		};
+
+		isOpen = false;
 		rootElement: any;
 		overlayElement: any;
 		buttonElement: any;
+		externalElements: any[];
+
+		handleEsc = (e: KeyboardEvent) => {
+			if (e.key === "Escape") {
+				this.onButtonClick();
+			}
+		};
+
+		onButtonClick = () => {
+			this.isOpen = !this.isOpen;
+			document.documentElement.classList.toggle(this.stateClasses.isLock);
+			this.buttonElement.classList.toggle(this.stateClasses.isActive);
+			this.overlayElement.classList.toggle(this.stateClasses.isActive);
+			this.buttonElement.setAttribute("title", this.isOpen ? "Close menu" : "Open menu");
+			this.buttonElement.setAttribute("aria-label", this.isOpen ? "Close menu" : "Open menu");
+			this.buttonElement.toggleAttribute("aria-expanded", this.isOpen);
+			this.overlayElement.toggleAttribute("inert");
+			this.externalElements.forEach((element) => {
+				element.toggleAttribute("inert");
+			});
+		};
 
 		constructor() {
 			this.rootElement = document.querySelector(this.selectors.root);
 			this.overlayElement = document.querySelector(this.selectors.overlay);
 			this.buttonElement = document.querySelector(this.selectors.button);
+			this.externalElements = [
+				document.querySelector(this.selectorsExternal.main),
+				document.querySelector(this.selectorsExternal.footer),
+				document.querySelector(this.selectorsExternal.home),
+			];
+			this.matchDevice();
 			this.bindEvents();
 		}
 
-		onButtonClick = () => {
-			this.buttonElement.classList.toggle(this.stateClasses.isActive);
-			this.overlayElement.classList.toggle(this.stateClasses.isActive);
-			document.documentElement.classList.toggle(this.stateClasses.isLock);
-		};
+		matchDevice() {
+			if (this.isMobile()) {
+				document.documentElement.addEventListener("keydown", this.handleEsc);
+				this.buttonElement.removeAttribute("hidden");
+				this.overlayElement.setAttribute("tabindex", "-1");
+				this.overlayElement.setAttribute("role", "dialog");
+				this.overlayElement.setAttribute("aria-modal", "true");
+				this.overlayElement.setAttribute("inert", "");
+			} else {
+				document.documentElement.removeEventListener("keydown", this.handleEsc);
+				this.buttonElement.setAttribute("hidden", "");
+				this.overlayElement.removeAttribute("tabindex");
+				this.overlayElement.removeAttribute("role");
+				this.overlayElement.removeAttribute("aria-modal");
+				this.overlayElement.removeAttribute("inert");
+			}
+		}
+
+		isMobile() {
+			return window.matchMedia("(max-width: 767px)").matches;
+		}
 
 		bindEvents() {
 			this.buttonElement.addEventListener("click", this.onButtonClick);
+
+			let resizeTimer: any;
+			window.addEventListener("resize", () => {
+				this.matchDevice();
+				this.overlayElement.classList.add("no-transition");
+				clearTimeout(resizeTimer);
+				resizeTimer = setTimeout(() => {
+					this.overlayElement.classList.remove("no-transition");
+				}, 300);
+			});
 		}
 	}
 	new Header();
