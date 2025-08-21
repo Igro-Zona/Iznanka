@@ -2,7 +2,7 @@
 
 html {
 	background-color: var(--color-white-100);
-	color: var(--color-black);
+	color: var(--color-black-900);
 	font-family: var(--font-family-base);
 	font-size: 16px;
 	font-weight: 400;
@@ -40,6 +40,7 @@ html {
 
 img,
 a,
+button,
 label,
 input,
 textarea,
@@ -61,7 +62,7 @@ body a {
 }
 
 *:focus-visible {
-	outline: 2px dashed var(--color-black);
+	outline: 2px dashed var(--color-black-900);
 	outline-offset: 4px;
 	transition-duration: 0s !important;
 }

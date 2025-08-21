@@ -1,0 +1,20 @@
+---
+const { url } = Astro.props;
+---
+
+<a
+	class="blue-button"
+	href={url}
+>
+	<slot />
+</a>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.blue-button {
+		padding: fluid-big(10, 6) fluid-big(30, 24);
+		background-color: var(--color-blue-600);
+		color: var(--color-white-100);
+	}
+</style>

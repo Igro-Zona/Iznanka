@@ -1,9 +1,13 @@
 ---
+import BlueButton from "@components/BlueButton.astro";
 import LogoIcon from "@svg/logo.svg";
 ---
 
-<header class="header">
-	<div class="wrapper">
+<header
+	class="header"
+	data-js-header=""
+>
+	<div class="header__wrapper wrapper">
 		<a
 			class="header__logo"
 			href="/"
@@ -17,6 +21,36 @@ import LogoIcon from "@svg/logo.svg";
 				aria-label={"Whirl Logo"}
 			/></a
 		>
+		<div
+			class="header__overlay"
+			data-js-header-overlay=""
+		>
+			<nav>
+				<ul class="header__list">
+					<li><a href="#!">Features</a></li>
+					<li><a href="#!">Pricing</a></li>
+					<li><a href="#!">Integrations</a></li>
+					<li><a href="#!">Learn</a></li>
+				</ul>
+			</nav>
+			<div class="header__buttons">
+				<a
+					class="header__buttons-link"
+					href="#!"
+					>Sign in</a
+				>
+				<BlueButton url="#!">Book a demo</BlueButton>
+			</div>
+		</div>
+		<button
+			type="button"
+			class="header__burger visible-mobile"
+			data-js-header-button=""
+		>
+			<span class="header__burger-line"></span>
+			<span class="header__burger-line"></span>
+			<span class="header__burger-line"></span>
+		</button>
 	</div>
 </header>
 
@@ -26,8 +60,141 @@ import LogoIcon from "@svg/logo.svg";
 	.header {
 		padding-block: 20px;
 
+		&__wrapper {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			column-gap: 36px;
+		}
+
 		&__logo {
 			display: inline-flex;
 		}
+
+		&__overlay {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 20px;
+			width: 100%;
+			background-color: var(--color-white-100);
+			line-height: 1.6;
+			transition-duration: var(--transition-duration);
+
+			@include font-variable(18, 15, 14);
+
+			@include mobile {
+				position: fixed;
+				inset: 0;
+				z-index: 99;
+				overflow-y: scroll;
+				justify-content: center;
+				font-size: 28px;
+				flex-direction: column;
+
+				&:not(.is-active) {
+					transform: translateX(100%);
+				}
+			}
+		}
+
+		&__list {
+			display: inline-flex;
+			gap: 24px;
+			color: var(--color-black-800);
+			text-align: center;
+
+			@include mobile {
+				flex-direction: column;
+			}
+		}
+
+		&__buttons {
+			display: inline-flex;
+			align-items: center;
+			gap: 30px;
+
+			@include mobile {
+				flex-direction: column;
+			}
+
+			&-link {
+				color: var(--color-blue-600);
+			}
+		}
+
+		&__burger {
+			position: relative;
+			z-index: 100;
+			display: inline-flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding: 8.5px 4.25px;
+
+			@include square(40px);
+
+			&-line {
+				width: 100%;
+				height: 2px;
+				border-radius: 16px;
+				background-color: var(--color-black-900);
+				transition-duration: var(--transition-duration);
+
+				&:last-child {
+					align-self: flex-end;
+					width: 60%;
+				}
+			}
+
+			&.is-active .header__burger-line {
+				&:first-child {
+					transform: rotate(45deg) translateY(-0.2em) translateX(0.2em);
+					transform-origin: 0;
+				}
+
+				&:nth-child(2) {
+					transform: rotate(-45deg);
+				}
+
+				&:last-child {
+					width: 0;
+				}
+			}
+		}
 	}
 </style>
+
+<script>
+	class Header {
+		selectors = {
+			root: "[data-js-header]",
+			overlay: "[data-js-header-overlay]",
+			button: "[data-js-header-button]",
+		};
+		stateClasses = {
+			isActive: "is-active",
+			isLock: "is-lock",
+		};
+		rootElement: any;
+		overlayElement: any;
+		buttonElement: any;
+
+		constructor() {
+			this.rootElement = document.querySelector(this.selectors.root);
+			this.overlayElement = document.querySelector(this.selectors.overlay);
+			this.buttonElement = document.querySelector(this.selectors.button);
+			this.bindEvents();
+		}
+
+		onButtonClick = () => {
+			this.buttonElement.classList.toggle(this.stateClasses.isActive);
+			this.overlayElement.classList.toggle(this.stateClasses.isActive);
+			document.documentElement.classList.toggle(this.stateClasses.isLock);
+		};
+
+		bindEvents() {
+			this.buttonElement.addEventListener("click", this.onButtonClick);
+		}
+	}
+	new Header();
+</script>
