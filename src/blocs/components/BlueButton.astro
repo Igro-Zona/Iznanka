@@ -1,9 +1,10 @@
 ---
-const { url } = Astro.props;
+const { url, isSmall = false } = Astro.props;
+const buttonClass = `blue-button${isSmall ? " blue-button--small" : ""}`;
 ---
 
 <a
-	class="blue-button"
+	class={buttonClass}
 	href={url}
 >
 	<slot />
@@ -13,8 +14,16 @@ const { url } = Astro.props;
 	@use "@styles/helpers" as *;
 
 	.blue-button {
-		padding: fluid-big(10, 6) fluid-big(30, 24);
+		padding: fluid-small(8, 6) fluid-small(32, 26);
 		background-color: var(--color-blue-600);
 		color: var(--color-white-100);
+
+		@include laptop-above {
+			padding: fluid-big(10, 8) fluid-big(40, 32);
+		}
+
+		&--small {
+			padding: fluid-big(8, 7) fluid-big(28, 20);
+		}
 	}
 </style>

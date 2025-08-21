@@ -1,0 +1,91 @@
+---
+import { Picture } from "astro:assets";
+import BlueButton from "@components/BlueButton.astro";
+import HeroImage from "@images/hero-image.jpg";
+import Icon from "@components/Icon.astro";
+---
+
+<section
+	class="hero"
+	aria-labelledby="hero-title"
+>
+	<div class="hero__wrapper wrapper">
+		<div class="hero__body">
+			<h1
+				class="h1"
+				id="hero-title"
+			>
+				Your everyday tasks, automated.
+			</h1>
+			<p class="hero__subtitle">
+				Whirl lets you design and streamline your everyday tasks and workflows in just a few clicks.
+			</p>
+			<div class="hero__extras">
+				<BlueButton url="#!">Book a demo</BlueButton>
+				<a
+					class="hero__link"
+					href="#!"
+					><Icon type="blue-arrow">Learn more</Icon></a
+				>
+			</div>
+		</div>
+		<Picture
+			src={HeroImage}
+			formats={["avif", "webp"]}
+			alt=""
+			width={452}
+			height={422}
+			densities={[2, 3]}
+			quality={70}
+			priority
+		/>
+	</div>
+</section>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.hero {
+		padding-block: fluid-small(70, 40) fluid-small(120, 40);
+
+		@include laptop-above {
+			padding-top: fluid-big(120, 70);
+		}
+
+		&__wrapper {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 24px;
+
+			@include mobile {
+				flex-direction: column;
+			}
+		}
+
+		&__body {
+			max-width: 510px;
+		}
+
+		&__subtitle {
+			max-width: 350px;
+			margin-top: 24px;
+
+			@include font-variable(24, 20, 18);
+		}
+
+		&__extras {
+			display: inline-flex;
+			align-items: center;
+			gap: 24px;
+			margin-top: 32px;
+			line-height: 1.5882;
+
+			@include font-variable(22, 17, 16);
+		}
+
+		&__link {
+			color: var(--color-blue-600);
+		}
+	}
+</style>
