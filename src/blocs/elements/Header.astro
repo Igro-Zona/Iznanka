@@ -6,7 +6,6 @@ import LogoIcon from "@svg/logo.svg";
 <header
 	class="header"
 	aria-label="Header"
-	data-js-header=""
 >
 	<div class="header__wrapper wrapper">
 		<a
@@ -178,7 +177,6 @@ import LogoIcon from "@svg/logo.svg";
 <script>
 	class Header {
 		selectors = {
-			root: "[data-js-header]",
 			overlay: "[data-js-header-overlay]",
 			button: "[data-js-header-button]",
 		};
@@ -219,7 +217,6 @@ import LogoIcon from "@svg/logo.svg";
 		};
 
 		constructor() {
-			this.rootElement = document.querySelector(this.selectors.root);
 			this.overlayElement = document.querySelector(this.selectors.overlay);
 			this.buttonElement = document.querySelector(this.selectors.button);
 			this.externalElements = [
