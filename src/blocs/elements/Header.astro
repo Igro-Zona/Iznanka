@@ -1,5 +1,33 @@
 ---
-
+import LogoIcon from "@svg/logo.svg";
 ---
 
-<header class="header"></header>
+<header class="header">
+	<div class="wrapper">
+		<a
+			class="header__logo"
+			href="/"
+			title="Home"
+			aria-label="Home"
+		>
+			<LogoIcon
+				width={106}
+				height={36}
+				role={"img"}
+				aria-label={"Whirl Logo"}
+			/></a
+		>
+	</div>
+</header>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.header {
+		padding-block: 20px;
+
+		&__logo {
+			display: inline-flex;
+		}
+	}
+</style>

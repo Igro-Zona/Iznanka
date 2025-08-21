@@ -175,7 +175,7 @@ export default {
 		"media-feature-range-notation": ["context", { severity: "warning" }],
 		"media-feature-name-unit-allowed-list": null,
 		"media-feature-name-value-allowed-list": null,
-		"number-max-precision": 3,
+		"number-max-precision": 4,
 		"property-allowed-list": null,
 		"property-disallowed-list": null,
 		"property-no-vendor-prefix": [true, { severity: "warning" }],

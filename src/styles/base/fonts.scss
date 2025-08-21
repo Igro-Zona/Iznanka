@@ -1,55 +1,15 @@
-// @font-face {
-// 	font-family: WorkSans;
-// 	font-style: normal;
-// 	font-weight: 600;
-// 	src: url("/src/assets/fonts/subset-WorkSans-SemiBold.woff2") format("woff2");
-// 	font-display: swap;
-// }
+@font-face {
+	font-family: Fraunces;
+	font-style: normal;
+	font-weight: 400;
+	src: url("@fonts/Fraunces.woff2") format("woff2");
+	font-display: swap;
+}
 
-// @font-face {
-// 	font-family: WorkSans;
-// 	font-style: normal;
-// 	font-weight: 500;
-// 	src: url("/src/assets/fonts/subset-WorkSans-Medium.woff2") format("woff2");
-// 	font-display: swap;
-// }
-
-// @font-face {
-// 	font-family: WorkSans;
-// 	font-style: normal;
-// 	font-weight: 400;
-// 	src: url("/src/assets/fonts/subset-WorkSans-Regular.woff2") format("woff2");
-// 	font-display: swap;
-// }
-
-// @font-face {
-// 	font-family: Nunito;
-// 	font-style: normal;
-// 	font-weight: 600;
-// 	src: url("/src/assets/fonts/subset-Nunito-SemiBold.woff2") format("woff2");
-// 	font-display: swap;
-// }
-
-// @font-face {
-// 	font-family: Nunito;
-// 	font-style: normal;
-// 	font-weight: 500;
-// 	src: url("/src/assets/fonts/subset-Nunito-Medium.woff2") format("woff2");
-// 	font-display: swap;
-// }
-
-// @font-face {
-// 	font-family: Nunito;
-// 	font-style: normal;
-// 	font-weight: 400;
-// 	src: url("/src/assets/fonts/subset-Nunito-Regular.woff2") format("woff2");
-// 	font-display: swap;
-// }
-
-// @font-face {
-// 	font-family: Nunito;
-// 	font-style: normal;
-// 	font-weight: 300;
-// 	src: url("/src/assets/fonts/subset-Nunito-Light.woff2") format("woff2");
-// 	font-display: swap;
-// }
+@font-face {
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 400;
+	src: url("@fonts/Inter.woff2") format("woff2");
+	font-display: swap;
+}

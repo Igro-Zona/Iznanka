@@ -104,14 +104,6 @@ address {
 	font-style: normal;
 }
 
-:where([fill]:not([fill="none"], [fill^="url"])) {
-	fill: currentcolor;
-}
-
-:where([stroke]:not([stroke="none"], [stroke^="url"])) {
-	stroke: currentcolor;
-}
-
 svg * {
 	transition-property: fill, stroke;
 }

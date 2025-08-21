@@ -1,5 +1,6 @@
 @use "sass:math";
 @use "functions" as *;
+@use "media" as *;
 
 @mixin hide {
 	opacity: 0;
@@ -31,4 +32,12 @@
 	padding: 0 !important;
 	white-space: nowrap !important;
 	clip-path: inset(100%) !important;
+}
+
+@mixin font-variable($max, $med, $min) {
+	font-size: fluid-small($med, $min);
+
+	@include laptop-above {
+		font-size: fluid-big($max, $med);
+	}
 }

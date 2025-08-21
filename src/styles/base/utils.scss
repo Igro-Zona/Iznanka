@@ -1,27 +1,12 @@
 @use "../helpers" as *;
 
 .wrapper {
+	--wrapper-width: #{fluid-big(1440, 1230)};
+	--wrapper-padding-x: 16px;
+
 	max-width: calc(var(--wrapper-width) + var(--wrapper-padding-x) * 2);
-	margin: 0 auto;
-	padding: 0 var(--wrapper-padding-x);
-}
-
-.inner {
-	max-width: calc(var(--inner-width) + var(--inner-padding-x) * 2);
-	margin: 0 auto;
-	padding: 0 var(--inner-padding-x);
-}
-
-.bold {
-	font-weight: 500;
-}
-
-.semibold {
-	font-weight: 600;
-}
-
-.yellow {
-	color: var(--text-yellow);
+	margin-inline: auto;
+	padding-inline: var(--wrapper-padding-x);
 }
 
 .visually-hidden {

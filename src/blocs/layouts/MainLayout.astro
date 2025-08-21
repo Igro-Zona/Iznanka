@@ -4,12 +4,7 @@ import Header from "@elements/Header.astro";
 import Main from "@elements/Main.astro";
 import Footer from "@elements/Footer.astro";
 
-interface Props {
-	lang: string;
-	title: string;
-}
-
-const props = Astro.props as Props;
+const props = Astro.props;
 ---
 
 <BaseLayout {...props}>

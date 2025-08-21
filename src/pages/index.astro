@@ -3,9 +3,27 @@ import MainLayout from "@layouts/MainLayout.astro";
 ---
 
 <MainLayout
-	lang="ru"
-	title="Изнанка | Главная страница"
+	lang="en"
+	title="Whirl | Home page"
 >
 	<h1 class="h2">Astro</h1>
 	<p>Hola</p>
+	<a href="#!">Click me</a>
+	<p class="text">
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis placeat possimus similique incidunt
+		blanditiis veniam sed, vero ducimus tempora.
+	</p>
 </MainLayout>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.text {
+		color: var(--color-blue-600);
+		font-size: 18px;
+
+		@include laptop-above {
+			color: var(--color-yellow);
+		}
+	}
+</style>

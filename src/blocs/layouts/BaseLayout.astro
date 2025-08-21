@@ -2,12 +2,7 @@
 import "/src/styles/main.scss";
 import Head from "@elements/Head.astro";
 
-interface Props {
-	lang: string;
-	title: string;
-}
-
-const { lang, title } = Astro.props as Props;
+const { lang, title } = Astro.props;
 ---
 
 <html lang={lang}>
