@@ -232,7 +232,7 @@ import LogoIcon from "@svg/logo.svg";
 		}
 
 		matchDevice() {
-			if (this.isMobile()) {
+			if (window.matchMedia("(max-width: 767px)").matches) {
 				document.documentElement.addEventListener("keydown", this.handleEsc);
 				this.buttonElement.removeAttribute("hidden");
 				this.overlayElement.setAttribute("tabindex", "-1");
@@ -247,10 +247,6 @@ import LogoIcon from "@svg/logo.svg";
 				this.overlayElement.removeAttribute("aria-modal");
 				this.overlayElement.removeAttribute("inert");
 			}
-		}
-
-		isMobile() {
-			return window.matchMedia("(max-width: 767px)").matches;
 		}
 
 		bindEvents() {
