@@ -3,42 +3,63 @@ import { Picture } from "astro:assets";
 import BlueButton from "@components/BlueButton.astro";
 import HeroImage from "@images/hero-image.jpg";
 import Icon from "@components/Icon.astro";
+import PartnersIcon1 from "@svg/partners-1.svg";
+import PartnersIcon2 from "@svg/partners-2.svg";
+import PartnersIcon3 from "@svg/partners-3.svg";
+import PartnersIcon4 from "@svg/partners-4.svg";
+import FlexLayout from "@layouts/FlexLayout.astro";
+import HeroCardsData from "src/data/hero-cards-data.json";
+import HeroCard from "@components/HeroCard.astro";
 ---
 
 <section
 	class="hero"
 	aria-labelledby="hero-title"
 >
-	<div class="hero__wrapper wrapper">
-		<div class="hero__body">
-			<h1
-				class="h1"
-				id="hero-title"
-			>
-				Your everyday tasks, automated.
-			</h1>
-			<p class="hero__subtitle">
-				Whirl lets you design and streamline your everyday tasks and workflows in just a few clicks.
-			</p>
-			<div class="hero__extras">
-				<BlueButton url="#!">Book a demo</BlueButton>
-				<a
-					class="hero__link"
-					href="#!"
-					><Icon type="blue-arrow">Learn more</Icon></a
+	<div class="wrapper">
+		<div class="hero__info">
+			<div class="hero__body">
+				<h1
+					class="h1"
+					id="hero-title"
 				>
+					Your everyday tasks, automated.
+				</h1>
+				<p class="hero__subtitle">
+					Whirl lets you design and streamline your everyday tasks and workflows in just a few clicks.
+				</p>
+				<div class="hero__extras">
+					<BlueButton url="#!">Book a demo</BlueButton>
+					<a
+						class="hero__link"
+						href="#!"
+						><Icon type="blue-arrow">Learn more</Icon></a
+					>
+				</div>
 			</div>
+			<Picture
+				src={HeroImage}
+				formats={["avif", "webp"]}
+				alt=""
+				width={452}
+				height={422}
+				densities={[2, 3]}
+				quality={70}
+				priority
+			/>
 		</div>
-		<Picture
-			src={HeroImage}
-			formats={["avif", "webp"]}
-			alt=""
-			width={452}
-			height={422}
-			densities={[2, 3]}
-			quality={70}
-			priority
-		/>
+		<div class="hero__partners">
+			<p>Trusted by 50,000+ companies</p>
+			<ul class="hero__partners-list">
+				<li class="hero__partners-item"><PartnersIcon1 aria-label="Partner: focusfox" /></li>
+				<li class="hero__partners-item"><PartnersIcon2 aria-label="Partner: NowInTech" /></li>
+				<li class="hero__partners-item"><PartnersIcon3 aria-label="Partner: Optimer" /></li>
+				<li class="hero__partners-item"><PartnersIcon4 aria-label="Partner: Carded" /></li>
+			</ul>
+		</div>
+		<FlexLayout>
+			{HeroCardsData.map((cardData) => <HeroCard {...cardData} />)}
+		</FlexLayout>
 	</div>
 </section>
 
@@ -52,7 +73,7 @@ import Icon from "@components/Icon.astro";
 			padding-top: fluid-big(120, 70);
 		}
 
-		&__wrapper {
+		&__info {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
@@ -86,6 +107,33 @@ import Icon from "@components/Icon.astro";
 
 		&__link {
 			color: var(--color-blue-600);
+		}
+
+		&__partners {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 24px;
+			margin-top: fluid-small(120, 40);
+			padding-bottom: fluid-small(160, 40);
+			line-height: 1.5625;
+
+			@include font-variable(30, 24, 22);
+
+			&-list {
+				display: grid;
+				grid-template-columns: repeat(2, auto);
+				align-items: center;
+				gap: fluid-small(62, 20);
+
+				@include mobile-above {
+					grid-template-columns: repeat(4, auto);
+				}
+			}
+
+			&-item {
+				display: inline-flex;
+			}
 		}
 	}
 </style>

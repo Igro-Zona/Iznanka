@@ -1,0 +1,26 @@
+---
+
+---
+
+<div class="flex">
+	<slot />
+</div>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.flex {
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+		gap: 32px;
+
+		@include tablet {
+			flex-direction: column;
+		}
+
+		& > * {
+			flex: 1;
+		}
+	}
+</style>

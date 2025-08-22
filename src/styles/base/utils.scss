@@ -1,7 +1,7 @@
 @use "../helpers" as *;
 
 .wrapper {
-	--wrapper-width: #{fluid-big(1440, 1230)};
+	--wrapper-width: #{fluid-big(1440, 1130)};
 	--wrapper-padding-x: 16px;
 
 	max-width: calc(var(--wrapper-width) + var(--wrapper-padding-x) * 2);
