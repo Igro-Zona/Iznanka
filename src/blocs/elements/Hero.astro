@@ -2,11 +2,8 @@
 import { Picture } from "astro:assets";
 import BlueButton from "@components/BlueButton.astro";
 import HeroImage from "@images/hero-image.jpg";
-import Icon from "@components/Icon.astro";
-import PartnersIcon1 from "@svg/partners-1.svg";
-import PartnersIcon2 from "@svg/partners-2.svg";
-import PartnersIcon3 from "@svg/partners-3.svg";
-import PartnersIcon4 from "@svg/partners-4.svg";
+import MyIcon from "@components/Icon.astro";
+import { Icon } from "astro-icon/components";
 import FlexLayout from "@layouts/FlexLayout.astro";
 import HeroCardsData from "src/data/hero-cards-data.json";
 import HeroCard from "@components/HeroCard.astro";
@@ -33,7 +30,7 @@ import HeroCard from "@components/HeroCard.astro";
 					<a
 						class="hero__link"
 						href="#!"
-						><Icon type="blue-arrow">Learn more</Icon></a
+						><MyIcon type="blue-arrow">Learn more</MyIcon></a
 					>
 				</div>
 			</div>
@@ -41,18 +38,46 @@ import HeroCard from "@components/HeroCard.astro";
 				src={HeroImage}
 				formats={["avif", "webp"]}
 				alt=""
-				quality={70}
-				layout={"constrained"}
+				densities={[2, 3]}
+				quality={65}
 				priority
 			/>
 		</div>
 		<div class="hero__partners">
 			<p>Trusted by 50,000+ companies</p>
 			<ul class="hero__partners-list">
-				<li class="hero__partners-item"><PartnersIcon1 aria-label="Partner: focusfox" /></li>
-				<li class="hero__partners-item"><PartnersIcon2 aria-label="Partner: NowInTech" /></li>
-				<li class="hero__partners-item"><PartnersIcon3 aria-label="Partner: Optimer" /></li>
-				<li class="hero__partners-item"><PartnersIcon4 aria-label="Partner: Carded" /></li>
+				<li class="hero__partners-item">
+					<Icon
+						name="partners-1"
+						width="124"
+						height="33"
+						aria-label="Partner: focusfox"
+					/>
+				</li>
+				<li class="hero__partners-item">
+					<Icon
+						name="partners-2"
+						width="159"
+						height="27"
+						aria-label="Partner: NowInTech"
+					/>
+				</li>
+				<li class="hero__partners-item">
+					<Icon
+						name="partners-3"
+						width="148"
+						height="33"
+						aria-label="Partner: Optimer"
+					/>
+				</li>
+				<li class="hero__partners-item">
+					<Icon
+						name="partners-4"
+						width="117"
+						height="34"
+						aria-label="Partner: Carded"
+					/>
+				</li>
 			</ul>
 		</div>
 		<FlexLayout>
@@ -130,6 +155,7 @@ import HeroCard from "@components/HeroCard.astro";
 			}
 
 			&-item {
+				overflow: visible;
 				display: inline-flex;
 			}
 		}

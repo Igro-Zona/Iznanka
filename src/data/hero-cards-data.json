@@ -1,20 +1,20 @@
 [
 	{
-		"iconURL": "@svg/hero-card-1.svg",
-		"color": "yellow",
+		"cardIcon": "hero-card-1",
+		"cardColor": "yellow",
 		"cardTitle": "Fast. Really fast.",
-		"content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+		"cardContent": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 	},
 	{
-		"iconURL": "@svg/hero-card-2.svg",
-		"color": "blue",
+		"cardIcon": "hero-card-2",
+		"cardColor": "blue",
 		"cardTitle": "More bang for buck.",
-		"content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+		"cardContent": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 	},
 	{
-		"iconURL": "@svg/hero-card-3.svg",
-		"color": "pink",
+		"cardIcon": "hero-card-3",
+		"cardColor": "pink",
 		"cardTitle": "Safe and secure.",
-		"content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+		"cardContent": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 	}
 ]

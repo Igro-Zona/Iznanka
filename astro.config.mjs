@@ -4,12 +4,53 @@ import sitemap from "@astrojs/sitemap";
 import { fileURLToPath } from "url";
 import path from "path";
 
+import icon from "astro-icon";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
 	site: "https://iznanka.netlify.app/",
 	base: "/",
-	integrations: [sitemap()],
+	integrations: [
+		sitemap(),
+		icon({
+			iconDir: "src/assets/svg",
+			svgoOptions: {
+				multipass: true,
+				plugins: [
+					{ name: "cleanupAttrs" },
+					{ name: "removeDoctype" },
+					{ name: "removeXMLProcInst" },
+					{ name: "removeComments" },
+					{ name: "removeMetadata" },
+					{ name: "removeEditorsNSData" },
+					{ name: "convertColors" },
+					{ name: "removeUnknownsAndDefaults" },
+					{ name: "removeNonInheritableGroupAttrs" },
+					{ name: "removeUselessStrokeAndFill" },
+					{ name: "removeViewBox" },
+					{ name: "cleanupEnableBackground" },
+					{ name: "removeHiddenElems" },
+					{ name: "removeEmptyText" },
+					{ name: "convertShapeToPath" },
+					{ name: "convertEllipseToCircle" },
+					{ name: "moveElemsAttrsToGroup" },
+					{ name: "moveGroupAttrsToElems" },
+					{ name: "collapseGroups" },
+					{ name: "convertPathData" },
+					{ name: "convertTransform" },
+					{ name: "removeEmptyAttrs" },
+					{ name: "removeEmptyContainers" },
+					{ name: "mergePaths" },
+					{ name: "removeUnusedNS" },
+					{ name: "sortAttrs" },
+					{ name: "removeTitle" },
+					{ name: "removeDesc" },
+					{ name: "cleanupNumericValues" },
+				],
+			},
+		}),
+	],
 	vite: {
 		resolve: {
 			alias: {

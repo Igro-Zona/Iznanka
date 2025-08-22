@@ -1,35 +1,23 @@
 ---
-import HeroCard1Icon from "@svg/hero-card-1.svg";
-import HeroCard2Icon from "@svg/hero-card-2.svg";
-import HeroCard3Icon from "@svg/hero-card-3.svg";
-const iconsMap: any = {
-	"@svg/hero-card-1.svg": HeroCard1Icon,
-	"@svg/hero-card-2.svg": HeroCard2Icon,
-	"@svg/hero-card-3.svg": HeroCard3Icon,
-};
-const { iconURL, color, cardTitle, content } = Astro.props;
-let cardClass = "hero-card";
-if (color === "yellow") {
-	cardClass = "hero-card hero-card--yellow";
-} else if (color === "blue") {
-	cardClass = "hero-card hero-card--blue";
-} else if (color === "pink") {
-	cardClass = "hero-card hero-card--pink";
-}
-const Icon = iconsMap[iconURL];
+import { Icon } from "astro-icon/components";
+const { cardIcon, cardColor, cardTitle, cardContent } = Astro.props;
 ---
 
 <div
-	class={cardClass}
+	class={`hero-card hero-card--${cardColor}`}
 	role="group"
 	aria-label={cardTitle}
 >
-	{Icon && <Icon />}
+	<Icon
+		name={cardIcon}
+		width="55"
+		height="55"
+	/>
 	<p class="hero-card__title h3">
 		<strong style="font-weight: 400;">{cardTitle}</strong>
 	</p>
 	<p class="hero-card__content">
-		{content}
+		{cardContent}
 	</p>
 </div>
 

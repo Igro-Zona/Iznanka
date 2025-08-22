@@ -1,6 +1,6 @@
 ---
 import BlueButton from "@components/BlueButton.astro";
-import LogoIcon from "@svg/logo.svg";
+import { Icon } from "astro-icon/components";
 ---
 
 <header
@@ -15,11 +15,12 @@ import LogoIcon from "@svg/logo.svg";
 			aria-label="Home"
 			data-js-header-home-button=""
 		>
-			<LogoIcon
+			<Icon
+				name="logo"
 				width={106}
 				height={36}
-				role={"img"}
-				aria-label={"Whirl Logo"}
+				role="img"
+				aria-label="Whirl Logo"
 			/></a
 		>
 		<button
