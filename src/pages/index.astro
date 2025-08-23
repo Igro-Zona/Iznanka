@@ -22,34 +22,34 @@ import MainLayout from "@layouts/MainLayout.astro";
 
 	window.onload = function () {
 		(function () {
-			// matchDevice();
+			matchDevice();
 			bindEvents();
 		})();
 	};
 
-	// function matchDevice() {
-	// 	if (window.matchMedia("(max-width: 767px)").matches) {
-	// 		document.documentElement.addEventListener("keydown", handleEsc);
-	// 		buttonElement.removeAttribute("hidden");
-	// 		overlayElement.setAttribute("tabindex", "-1");
-	// 		overlayElement.setAttribute("role", "dialog");
-	// 		overlayElement.setAttribute("aria-modal", "true");
-	// 		overlayElement.setAttribute("inert", "");
-	// 	} else {
-	// 		document.documentElement.removeEventListener("keydown", handleEsc);
-	// 		buttonElement.setAttribute("hidden", "");
-	// 		overlayElement.removeAttribute("tabindex");
-	// 		overlayElement.removeAttribute("role");
-	// 		overlayElement.removeAttribute("aria-modal");
-	// 		overlayElement.removeAttribute("inert");
-	// 	}
-	// }
+	function matchDevice() {
+		if (window.matchMedia("(max-width: 767px)").matches) {
+			document.documentElement.addEventListener("keydown", handleEsc);
+			buttonElement.removeAttribute("hidden");
+			overlayElement.setAttribute("tabindex", "-1");
+			overlayElement.setAttribute("role", "dialog");
+			overlayElement.setAttribute("aria-modal", "true");
+			overlayElement.setAttribute("inert", "");
+		} else {
+			document.documentElement.removeEventListener("keydown", handleEsc);
+			buttonElement.setAttribute("hidden", "");
+			overlayElement.removeAttribute("tabindex");
+			overlayElement.removeAttribute("role");
+			overlayElement.removeAttribute("aria-modal");
+			overlayElement.removeAttribute("inert");
+		}
+	}
 
-	// var handleEsc = (e) => {
-	// 	if (e.key === "Escape") {
-	// 		onButtonClick();
-	// 	}
-	// };
+	var handleEsc = (e) => {
+		if (e.key === "Escape") {
+			onButtonClick();
+		}
+	};
 
 	var onButtonClick = () => {
 		isOpen = !isOpen;
@@ -70,7 +70,7 @@ import MainLayout from "@layouts/MainLayout.astro";
 
 		let resizeTimer;
 		window.addEventListener("resize", () => {
-			// matchDevice();
+			matchDevice();
 			overlayElement.classList.add("no-transition");
 			clearTimeout(resizeTimer);
 			resizeTimer = setTimeout(() => {
