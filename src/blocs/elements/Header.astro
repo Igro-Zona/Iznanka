@@ -30,6 +30,7 @@ import { Icon } from "astro-icon/components";
 			aria-label="Open menu"
 			aria-controls="header-overlay"
 			data-js-header-button=""
+			hidden
 		>
 			<span class="header__burger-line"></span>
 			<span class="header__burger-line"></span>
@@ -179,91 +180,72 @@ import { Icon } from "astro-icon/components";
 	}
 </style>
 
-<script>
-	class Header {
-		selectors = {
-			overlay: "[data-js-header-overlay]",
-			button: "[data-js-header-button]",
-		};
-		selectorsExternal = {
-			main: "[data-js-main]",
-			footer: "[data-js-footer]",
-			home: "[data-js-header-home-button",
-		};
-		stateClasses = {
-			isActive: "is-active",
-			isLock: "is-lock",
-		};
+<script lang="js">
+	var isOpen = false;
+	var overlayElement = document.querySelector("[data-js-header-overlay]");
+	var buttonElement = document.querySelector("[data-js-header-button]");
+	var externalElements = [
+		document.querySelector("[data-js-main]"),
+		document.querySelector("[data-js-footer]"),
+		document.querySelector("[data-js-header-home-button]"),
+	];
 
-		isOpen = false;
-		rootElement: any;
-		overlayElement: any;
-		buttonElement: any;
-		externalElements: any[];
+	window.onload = function () {
+		(function () {
+			matchDevice();
+			bindEvents();
+		})();
+	};
 
-		handleEsc = (e: KeyboardEvent) => {
-			if (e.key === "Escape") {
-				this.onButtonClick();
-			}
-		};
-
-		onButtonClick = () => {
-			this.isOpen = !this.isOpen;
-			document.documentElement.classList.toggle(this.stateClasses.isLock);
-			this.buttonElement.classList.toggle(this.stateClasses.isActive);
-			this.overlayElement.classList.toggle(this.stateClasses.isActive);
-			this.buttonElement.setAttribute("title", this.isOpen ? "Close menu" : "Open menu");
-			this.buttonElement.setAttribute("aria-label", this.isOpen ? "Close menu" : "Open menu");
-			this.buttonElement.toggleAttribute("aria-expanded", this.isOpen);
-			this.overlayElement.toggleAttribute("inert");
-			this.externalElements.forEach((element) => {
-				element.toggleAttribute("inert");
-			});
-		};
-
-		constructor() {
-			this.overlayElement = document.querySelector(this.selectors.overlay);
-			this.buttonElement = document.querySelector(this.selectors.button);
-			this.externalElements = [
-				document.querySelector(this.selectorsExternal.main),
-				document.querySelector(this.selectorsExternal.footer),
-				document.querySelector(this.selectorsExternal.home),
-			];
-			this.matchDevice();
-			this.bindEvents();
-		}
-
-		matchDevice() {
-			if (window.matchMedia("(max-width: 767px)").matches) {
-				document.documentElement.addEventListener("keydown", this.handleEsc);
-				this.buttonElement.removeAttribute("hidden");
-				this.overlayElement.setAttribute("tabindex", "-1");
-				this.overlayElement.setAttribute("role", "dialog");
-				this.overlayElement.setAttribute("aria-modal", "true");
-				this.overlayElement.setAttribute("inert", "");
-			} else {
-				document.documentElement.removeEventListener("keydown", this.handleEsc);
-				this.buttonElement.setAttribute("hidden", "");
-				this.overlayElement.removeAttribute("tabindex");
-				this.overlayElement.removeAttribute("role");
-				this.overlayElement.removeAttribute("aria-modal");
-				this.overlayElement.removeAttribute("inert");
-			}
-		}
-
-		bindEvents() {
-			this.buttonElement.addEventListener("click", this.onButtonClick);
-
-			let resizeTimer: any;
-			window.addEventListener("resize", () => {
-				this.matchDevice();
-				this.overlayElement.classList.add("no-transition");
-				clearTimeout(resizeTimer);
-				resizeTimer = setTimeout(() => {
-					this.overlayElement.classList.remove("no-transition");
-				}, 300);
-			});
+	function matchDevice() {
+		if (window.matchMedia("(max-width: 767px)").matches) {
+			document.documentElement.addEventListener("keydown", handleEsc);
+			buttonElement.removeAttribute("hidden");
+			overlayElement.setAttribute("tabindex", "-1");
+			overlayElement.setAttribute("role", "dialog");
+			overlayElement.setAttribute("aria-modal", "true");
+			overlayElement.setAttribute("inert", "");
+		} else {
+			document.documentElement.removeEventListener("keydown", handleEsc);
+			buttonElement.setAttribute("hidden", "");
+			overlayElement.removeAttribute("tabindex");
+			overlayElement.removeAttribute("role");
+			overlayElement.removeAttribute("aria-modal");
+			overlayElement.removeAttribute("inert");
 		}
 	}
-	new Header();
+
+	var handleEsc = (e) => {
+		if (e.key === "Escape") {
+			onButtonClick();
+		}
+	};
+
+	var onButtonClick = () => {
+		isOpen = !isOpen;
+		document.documentElement.classList.toggle("is-lock");
+		buttonElement.classList.toggle("is-active");
+		overlayElement.classList.toggle("is-active");
+		buttonElement.setAttribute("title", isOpen ? "Close menu" : "Open menu");
+		buttonElement.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+		buttonElement.toggleAttribute("aria-expanded", isOpen);
+		overlayElement.toggleAttribute("inert");
+		externalElements.forEach((element) => {
+			element.toggleAttribute("inert");
+		});
+	};
+
+	function bindEvents() {
+		buttonElement.addEventListener("click", onButtonClick);
+
+		let resizeTimer;
+		window.addEventListener("resize", () => {
+			matchDevice();
+			overlayElement.classList.add("no-transition");
+			clearTimeout(resizeTimer);
+			resizeTimer = setTimeout(() => {
+				overlayElement.classList.remove("no-transition");
+			}, 300);
+		});
+	}
 </script>
