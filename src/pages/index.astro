@@ -12,8 +12,9 @@ import MainLayout from "@layouts/MainLayout.astro";
 
 <script>
 	var isOpen = false;
-	var overlayElement = document.querySelector("[data-js-header-overlay]");
-	var buttonElement = document.querySelector("[data-js-header-button]");
+	var noTransition = false;
+	var overlayElement: any = document.querySelector("[data-js-header-overlay]");
+	var buttonElement: any = document.querySelector("[data-js-header-button]");
 	var externalElements = [
 		document.querySelector("[data-js-main]"),
 		document.querySelector("[data-js-footer]"),
@@ -21,10 +22,10 @@ import MainLayout from "@layouts/MainLayout.astro";
 	];
 
 	window.onload = function () {
-		(function () {
+		setTimeout(function () {
 			matchDevice();
 			bindEvents();
-		})();
+		}, 10000);
 	};
 
 	function matchDevice() {
@@ -45,7 +46,7 @@ import MainLayout from "@layouts/MainLayout.astro";
 		}
 	}
 
-	var handleEsc = (e) => {
+	var handleEsc = (e: any) => {
 		if (e.key === "Escape") {
 			onButtonClick();
 		}
@@ -60,7 +61,7 @@ import MainLayout from "@layouts/MainLayout.astro";
 		buttonElement.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
 		buttonElement.toggleAttribute("aria-expanded", isOpen);
 		overlayElement.toggleAttribute("inert");
-		externalElements.forEach((element) => {
+		externalElements.forEach((element: any) => {
 			element.toggleAttribute("inert");
 		});
 	};
@@ -68,14 +69,31 @@ import MainLayout from "@layouts/MainLayout.astro";
 	function bindEvents() {
 		buttonElement.addEventListener("click", onButtonClick);
 
-		let resizeTimer;
 		window.addEventListener("resize", () => {
-			matchDevice();
-			overlayElement.classList.add("no-transition");
-			clearTimeout(resizeTimer);
-			resizeTimer = setTimeout(() => {
-				overlayElement.classList.remove("no-transition");
-			}, 300);
+			if (!noTransition) {
+				overlayElement.classList.add("no-transition");
+				noTransition = true;
+			}
+			debouncedMatchDevice();
+			debouncedRemoveTransition();
 		});
+	}
+
+	var debouncedMatchDevice = debounce(matchDevice, 2000);
+	var debouncedRemoveTransition = debounce(removeTransition, 2000);
+
+	function removeTransition() {
+		overlayElement.classList.remove("no-transition");
+		noTransition = false;
+	}
+
+	function debounce(fn: any, delay: any) {
+		let timer: any;
+		return function (this: any, ...args: any[]) {
+			clearTimeout(timer);
+			timer = setTimeout(() => {
+				fn.apply(this, args);
+			}, delay);
+		};
 	}
 </script>
