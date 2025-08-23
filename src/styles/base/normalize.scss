@@ -109,6 +109,11 @@ svg * {
 	transition-property: fill, stroke;
 }
 
+:where(h1) {
+	margin-block: 0.67em;
+	font-size: 2em;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	*,
 	::before,
