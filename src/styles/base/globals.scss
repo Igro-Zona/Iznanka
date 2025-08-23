@@ -14,6 +14,13 @@ html {
 	}
 }
 
+article h1,
+aside h1,
+nav h1,
+section h1 {
+	@include font-variable(68, 58, 44);
+}
+
 .h1,
 .h2,
 .h3 {
