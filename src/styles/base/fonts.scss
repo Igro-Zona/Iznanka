@@ -3,7 +3,7 @@
 	font-style: normal;
 	font-weight: 400;
 	src: url("@fonts/Fraunces.woff2") format("woff2");
-	font-display: block;
+	font-display: swap;
 }
 
 @font-face {
@@ -11,5 +11,5 @@
 	font-style: normal;
 	font-weight: 400;
 	src: url("@fonts/Inter.woff2") format("woff2");
-	font-display: block;
+	font-display: swap;
 }
