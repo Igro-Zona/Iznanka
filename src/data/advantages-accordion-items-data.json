@@ -1,0 +1,28 @@
+[
+	{
+		"itemIcon": "accordion-item-icon-1",
+		"itemTitle": "Anti-loss technology",
+		"itemContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"rest": {
+			"open": true
+		}
+	},
+	{
+		"itemIcon": "accordion-item-icon-2",
+		"itemTitle": "Exchange easily",
+		"itemContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"rest": {}
+	},
+	{
+		"itemIcon": "accordion-item-icon-3",
+		"itemTitle": "Fully encrypted",
+		"itemContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"rest": {}
+	},
+	{
+		"itemIcon": "accordion-item-icon-4",
+		"itemTitle": "Plenty of options",
+		"itemContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+		"rest": {}
+	}
+]

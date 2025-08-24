@@ -1,0 +1,146 @@
+---
+import { Picture } from "astro:assets";
+import AdvantagesImage from "@images/advantages-image.png";
+import AccordionItem from "@components/AccordionItem.astro";
+import AccordionItemsData from "src/data/advantages-accordion-items-data.json";
+---
+
+<section
+	class="advantages"
+	aria-labelledby="advantages-title"
+>
+	<div class="wrapper">
+		<h2
+			class="advantages__title h2"
+			id="advantages-title"
+		>
+			We will take care of everything, so you can get back to relaxing.
+		</h2>
+		<div class="advantages__body">
+			<div class="advantages__accordion">
+				{
+					AccordionItemsData.map((ItemData) => (
+						<AccordionItem
+							itemIcon={ItemData.itemIcon}
+							itemTitle={ItemData.itemTitle}
+							itemContent={ItemData.itemContent}
+							rest={ItemData.rest}
+						/>
+					))
+				}
+			</div>
+			<Picture
+				src={AdvantagesImage}
+				formats={["avif", "webp"]}
+				alt=""
+				densities={[2, 3]}
+				quality={65}
+			/>
+		</div>
+	</div>
+</section>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.advantages {
+		margin-bottom: 600px;
+		padding-block: fluid-small(80, 40);
+		background-color: var(--color-white-200);
+
+		&__title {
+			text-align: center;
+
+			@include mobile-above {
+				max-width: fluid-big(700, 610);
+				text-align: initial;
+			}
+		}
+
+		&__body {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			gap: 24px;
+			margin-top: fluid-small(34, 24);
+
+			@include mobile {
+				flex-direction: column;
+			}
+		}
+
+		&__accordion {
+			display: flex;
+			gap: 2px;
+			width: 100%;
+			flex-direction: column;
+
+			@include mobile-above {
+				width: 450px;
+			}
+		}
+	}
+</style>
+
+<script>
+	var items: any[] = [];
+
+	window.addEventListener("load", () => {
+		requestAnimationFrame(() => {
+			document.querySelectorAll("[data-js-accordion-item]").forEach((item) => {
+				items.push(buildItem(item));
+			});
+		});
+	});
+
+	function buildItem(rootElement: any) {
+		var summaryElement = rootElement.querySelector("[data-js-accordion-summary]");
+		var contentElement = rootElement.querySelector("[data-js-accordion-content]");
+		bindEvents(rootElement, summaryElement, contentElement);
+		return { rootElement, summaryElement, contentElement };
+	}
+
+	function closeAll(except: any) {
+		items.forEach((item: any) => {
+			if (item.rootElement !== except.rootElement) {
+				close(item.rootElement, item.contentElement);
+			}
+		});
+	}
+
+	function bindEvents(rootElement: any, summaryElement: any, contentElement: any) {
+		summaryElement.addEventListener("click", (event: any) => {
+			var currentItem = items.find((i) => i.rootElement === rootElement);
+			event.preventDefault();
+			if (rootElement.open) {
+				close(rootElement, contentElement);
+			} else {
+				closeAll(currentItem);
+				open(rootElement, contentElement);
+			}
+		});
+	}
+
+	function open(rootElement: any, contentElement: any) {
+		contentElement.classList.add("is-active");
+		rootElement.open = true;
+		var endHeight = contentElement.scrollHeight + 20;
+		requestAnimationFrame(() => {
+			contentElement.style.height = endHeight + "px";
+		});
+	}
+
+	function close(rootElement: any, contentElement: any) {
+		var startHeight = contentElement.scrollHeight;
+		console.log(startHeight);
+		contentElement.style.height = startHeight + "px";
+		contentElement.classList.remove("is-active");
+		requestAnimationFrame(() => {
+			contentElement.style.height = "0px";
+		});
+		setTimeout(() => {
+			contentElement.style.height = "0px";
+			rootElement.open = false;
+		}, 400);
+	}
+</script>
