@@ -44,7 +44,6 @@ import AccordionItemsData from "src/data/advantages-accordion-items-data.json";
 	@use "@styles/helpers" as *;
 
 	.advantages {
-		margin-bottom: 600px;
 		padding-block: fluid-small(80, 40);
 		background-color: var(--color-white-200);
 
@@ -90,6 +89,10 @@ import AccordionItemsData from "src/data/advantages-accordion-items-data.json";
 			document.querySelectorAll("[data-js-accordion-item]").forEach((item) => {
 				items.push(buildItem(item));
 			});
+			var firstOpen = items.find((i) => i.rootElement.hasAttribute("open"));
+			if (firstOpen) {
+				open(firstOpen.rootElement, firstOpen.contentElement);
+			}
 		});
 	});
 
@@ -122,25 +125,16 @@ import AccordionItemsData from "src/data/advantages-accordion-items-data.json";
 	}
 
 	function open(rootElement: any, contentElement: any) {
-		contentElement.classList.add("is-active");
 		rootElement.open = true;
-		var endHeight = contentElement.scrollHeight + 20;
 		requestAnimationFrame(() => {
-			contentElement.style.height = endHeight + "px";
+			contentElement.style.height = contentElement.scrollHeight + 20 + "px";
 		});
 	}
 
 	function close(rootElement: any, contentElement: any) {
-		var startHeight = contentElement.scrollHeight;
-		console.log(startHeight);
-		contentElement.style.height = startHeight + "px";
-		contentElement.classList.remove("is-active");
-		requestAnimationFrame(() => {
-			contentElement.style.height = "0px";
-		});
+		contentElement.style.height = "0px";
 		setTimeout(() => {
-			contentElement.style.height = "0px";
 			rootElement.open = false;
-		}, 400);
+		}, 210);
 	}
 </script>

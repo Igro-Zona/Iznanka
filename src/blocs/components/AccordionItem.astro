@@ -28,7 +28,7 @@ const { itemIcon, itemTitle, itemContent, rest } = Astro.props;
 		/>
 	</summary>
 	<p
-		class="accordion-item__info is-active"
+		class="accordion-item__info"
 		data-js-accordion-content=""
 	>
 		{itemContent}
@@ -66,15 +66,9 @@ const { itemIcon, itemTitle, itemContent, rest } = Astro.props;
 		&__info {
 			box-sizing: border-box;
 			overflow: hidden;
-			height: auto;
+			height: 0;
 			padding: 0 32px 0 fluid-big(70, 60);
-			transition:
-				height var(--transition-duration) ease,
-				padding var(--transition-duration) ease;
-
-			&.is-active {
-				padding-bottom: 20px;
-			}
+			transition: height var(--transition-duration) ease-in-out;
 		}
 
 		&:not([open]) {
