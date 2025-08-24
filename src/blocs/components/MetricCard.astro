@@ -47,10 +47,16 @@ if (isSmall) {
 
 		&--white {
 			background-color: var(--color-white-100);
+
+			@include tablet {
+				background-color: var(--color-white-300);
+			}
 		}
 
 		&--small {
-			padding: 0 0 15px;
+			@include tablet-above {
+				padding: 0 0 15px;
+			}
 		}
 
 		&__title {
