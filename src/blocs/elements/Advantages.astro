@@ -89,10 +89,7 @@ import AccordionItemsData from "src/data/advantages-accordion-items-data.json";
 			document.querySelectorAll("[data-js-accordion-item]").forEach((item) => {
 				items.push(buildItem(item));
 			});
-			var firstOpen = items.find((i) => i.rootElement.hasAttribute("open"));
-			if (firstOpen) {
-				open(firstOpen.rootElement, firstOpen.contentElement);
-			}
+			open(items[0].rootElement, items[0].contentElement);
 		});
 	});
 

@@ -2,6 +2,7 @@
 import MainLayout from "@layouts/MainLayout.astro";
 import Hero from "@elements/Hero.astro";
 import Advantages from "@elements/Advantages.astro";
+import About from "@elements/About.astro";
 ---
 
 <MainLayout
@@ -10,6 +11,7 @@ import Advantages from "@elements/Advantages.astro";
 >
 	<Hero />
 	<Advantages />
+	<About />
 </MainLayout>
 
 <script>
@@ -27,7 +29,7 @@ import Advantages from "@elements/Advantages.astro";
 		setTimeout(function () {
 			matchDevice();
 			bindEvents();
-		}, 10000);
+		}, 4000);
 	};
 
 	function matchDevice() {

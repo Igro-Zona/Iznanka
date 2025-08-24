@@ -1,10 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
-const { cardIcon, cardColor, cardTitle, cardContent } = Astro.props;
+const { cardIcon, cardColor, cardTitle, cardContent, isSmall = false } = Astro.props;
+let smallClass;
+if (isSmall) {
+	smallClass = "metric-card--small";
+} else {
+	smallClass = "";
+}
 ---
 
 <div
-	class={`hero-card hero-card--${cardColor}`}
+	class={`metric-card metric-card--${cardColor} ${smallClass}`}
 	role="group"
 	aria-label={cardTitle}
 >
@@ -13,10 +19,10 @@ const { cardIcon, cardColor, cardTitle, cardContent } = Astro.props;
 		width="55"
 		height="55"
 	/>
-	<p class="hero-card__title h3">
+	<p class="metric-card__title h3">
 		<strong style="font-weight: 400;">{cardTitle}</strong>
 	</p>
-	<p class="hero-card__content">
+	<p class="metric-card__content">
 		{cardContent}
 	</p>
 </div>
@@ -24,7 +30,7 @@ const { cardIcon, cardColor, cardTitle, cardContent } = Astro.props;
 <style lang="scss">
 	@use "@styles/helpers" as *;
 
-	.hero-card {
+	.metric-card {
 		padding: 32px 32px 38px;
 
 		&--yellow {
@@ -37,6 +43,14 @@ const { cardIcon, cardColor, cardTitle, cardContent } = Astro.props;
 
 		&--pink {
 			background-color: var(--color-pink);
+		}
+
+		&--white {
+			background-color: var(--color-white-100);
+		}
+
+		&--small {
+			padding: 0 0 15px;
 		}
 
 		&__title {

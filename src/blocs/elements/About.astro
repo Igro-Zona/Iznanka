@@ -1,0 +1,53 @@
+---
+import MetricCard from "@components/MetricCard.astro";
+import FlexLayout from "@layouts/FlexLayout.astro";
+import MetricCardsData from "src/data/about-metric-cards-data.json";
+---
+
+<section
+	class="about"
+	aria-labelledby="about-title"
+>
+	<div class="about__wrapper wrapper">
+		<h2
+			class="about__title h2"
+			id="about-title"
+		>
+			What's Whirl all about?
+		</h2>
+		<FlexLayout>
+			{MetricCardsData.map((cardData) => <MetricCard {...cardData} />)}
+		</FlexLayout>
+	</div>
+</section>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.about {
+		padding-block: fluid-small(120, 40);
+
+		&__wrapper {
+			display: flex;
+			gap: fluid-small(98, 24);
+
+			@include tablet {
+				flex-direction: column;
+			}
+		}
+
+		&__title {
+			flex-shrink: 0;
+			max-width: fluid-big(300, 260);
+
+			@include tablet-above {
+				margin-right: 40px;
+			}
+
+			@include tablet {
+				max-width: initial;
+				text-align: center;
+			}
+		}
+	}
+</style>

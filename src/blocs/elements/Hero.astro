@@ -5,8 +5,8 @@ import HeroImage from "@images/hero-image.jpg";
 import MyIcon from "@components/Icon.astro";
 import { Icon } from "astro-icon/components";
 import FlexLayout from "@layouts/FlexLayout.astro";
-import HeroCardsData from "src/data/hero-cards-data.json";
-import HeroCard from "@components/HeroCard.astro";
+import MetricCardsData from "src/data/hero-metric-cards-data.json";
+import MetricCard from "@components/MetricCard.astro";
 ---
 
 <section
@@ -81,7 +81,7 @@ import HeroCard from "@components/HeroCard.astro";
 			</ul>
 		</div>
 		<FlexLayout>
-			{HeroCardsData.map((cardData) => <HeroCard {...cardData} />)}
+			{MetricCardsData.map((cardData) => <MetricCard {...cardData} />)}
 		</FlexLayout>
 	</div>
 </section>

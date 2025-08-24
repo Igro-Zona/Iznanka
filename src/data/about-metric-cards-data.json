@@ -1,0 +1,23 @@
+[
+	{
+		"cardIcon": "hero-card-1",
+		"cardColor": "white",
+		"cardTitle": "All on one place.",
+		"cardContent": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+		"isSmall": true
+	},
+	{
+		"cardIcon": "hero-card-2",
+		"cardColor": "white",
+		"cardTitle": "Get daily alerts.",
+		"cardContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+		"isSmall": true
+	},
+	{
+		"cardIcon": "hero-card-3",
+		"cardColor": "white",
+		"cardTitle": "Safe and secure.",
+		"cardContent": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+		"isSmall": true
+	}
+]
