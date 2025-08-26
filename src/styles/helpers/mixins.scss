@@ -41,3 +41,7 @@
 		font-size: fluid-big($max, $med);
 	}
 }
+
+@mixin font-medium {
+	@include font-variable(20, 18, 16);
+}

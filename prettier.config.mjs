@@ -15,7 +15,6 @@ export default {
 	arrowParens: "always",
 	rangeStart: 0,
 	rangeEnd: Infinity,
-	// parser: null,
 	requirePragma: false,
 	insertPragma: false,
 	checkIgnorePragma: false,

@@ -1,0 +1,115 @@
+---
+import BlueButton from "@components/BlueButton.astro";
+import Picture from "astro/components/Picture.astro";
+import Image from "@images/analytics-image.png";
+---
+
+<section
+	class="analytics"
+	aria-labelledby="analytics-title"
+>
+	<div class="analytics__wrapper wrapper">
+		<Picture
+			src={Image}
+			alt=""
+			width={382}
+			height={374}
+			formats={["avif", "webp"]}
+			densities={[2, 3]}
+			quality={65}
+		/>
+		<div class="analytics__body">
+			<h2
+				class="analytics__title h2"
+				id="analytics-title"
+			>
+				Set, forget, and then track.
+			</h2>
+			<p class="analytics__info">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua.
+			</p>
+			<ul class="analytics__list">
+				<li class="analytics__item">Understand your options</li>
+				<li class="analytics__item">No lock-ins</li>
+				<li class="analytics__item">You own the shares</li>
+			</ul>
+			<BlueButton url="#!">Book a Demo</BlueButton>
+		</div>
+	</div>
+</section>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.analytics {
+		padding-block: fluid-small(80, 40);
+		background-color: var(--color-blue-600);
+
+		@include laptop-above {
+			padding-block: fluid-big(120, 80);
+		}
+
+		&__wrapper {
+			display: flex;
+			justify-content: space-between;
+			gap: 32px;
+
+			@include mobile {
+				flex-direction: column;
+				align-items: center;
+			}
+		}
+
+		& picture {
+			flex-shrink: 0.5;
+
+			@include tablet-above {
+				margin-left: fluid-big(90, 60);
+			}
+		}
+
+		&__body {
+			display: flex;
+			flex-direction: column;
+			gap: 18px;
+			color: var(--color-white-100);
+
+			@include font-variable(20, 17, 16);
+
+			@include mobile-above {
+				max-width: fluid-big(650, 500);
+			}
+		}
+
+		&__title {
+			@include mobile-above {
+				max-width: fluid-big(450, 500);
+			}
+		}
+
+		&__info {
+			@include font-medium;
+		}
+
+		&__list {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&__item {
+			display: inline-flex;
+			padding-bottom: fluid-big(14, 11);
+			font-size: 16px;
+			line-height: 1.35;
+
+			&::before {
+				content: "";
+				margin-right: 4px;
+				background: url("src/assets/svg/pink-mark.svg");
+
+				@include square(21px);
+			}
+		}
+	}
+</style>

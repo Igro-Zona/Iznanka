@@ -39,17 +39,13 @@ html {
 	@include font-variable(32, 25, 24);
 }
 
-img,
 a,
 button,
 label,
 input,
 textarea,
 select,
-optgroup,
-summary,
-details,
-svg * {
+optgroup {
 	transition-duration: var(--transition-duration);
 }
 
