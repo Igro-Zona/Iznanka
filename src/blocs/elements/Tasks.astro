@@ -1,0 +1,60 @@
+---
+import MetricCard from "@components/MetricCard.astro";
+import FlexLayout from "@layouts/FlexLayout.astro";
+import MetricCardsData from "src/data/tasks-metric-cards-data.json";
+---
+
+<section
+	class="tasks"
+	aria-labelledby="tasks-title"
+>
+	<div class="tasks__wrapper wrapper">
+		<div class="tasks__info">
+			<h2
+				class="tasks__title h2"
+				id="tasks-title"
+			>
+				Your tasks, automated.
+			</h2>
+			<p class="tasks__subtitle">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua.
+			</p>
+		</div>
+		<FlexLayout>
+			{MetricCardsData.map((CardData) => <MetricCard {...CardData} />)}
+		</FlexLayout>
+	</div>
+</section>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.tasks {
+		padding-block: fluid-small(120, 40);
+
+		&__wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: fluid-small(68, 32);
+		}
+
+		&__info {
+			display: flex;
+			flex-direction: column;
+			gap: fluid-small(21, 18);
+
+			@include laptop-above {
+				gap: fluid-big(24, 21);
+			}
+		}
+
+		&__subtitle {
+			@include font-medium;
+
+			@include tablet-above {
+				max-width: 650px;
+			}
+		}
+	}
+</style>

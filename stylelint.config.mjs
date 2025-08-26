@@ -79,7 +79,7 @@ export default {
 		"property-no-deprecated": [true, { severity: "warning" }],
 		"property-no-unknown": null,
 		"selector-anb-no-unmatchable": true,
-		"selector-pseudo-class-no-unknown": true,
+		"selector-pseudo-class-no-unknown": null,
 		"selector-pseudo-element-no-unknown": true,
 		"selector-type-no-unknown": true,
 		"string-no-newline": [true, { ignore: ["at-rule-preludes", "declaration-values"] }],

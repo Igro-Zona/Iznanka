@@ -1,0 +1,30 @@
+[
+	{
+		"cardIcon": "hero-card-1",
+		"cardColor": "white",
+		"cardTitle": "Learn your options.",
+		"cardContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.",
+		"isSmall": true
+	},
+	{
+		"cardIcon": "hero-card-2",
+		"cardColor": "white",
+		"cardTitle": "Stay informed.",
+		"cardContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doloretro.",
+		"isSmall": true
+	},
+	{
+		"cardIcon": "hero-card-3",
+		"cardColor": "white",
+		"cardTitle": "Automate it all.",
+		"cardContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ipsum.",
+		"isSmall": true
+	},
+	{
+		"cardIcon": "hero-card-1",
+		"cardColor": "white",
+		"cardTitle": "Stay informed.",
+		"cardContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididunt ut labore et consectetur.",
+		"isSmall": true
+	}
+]
