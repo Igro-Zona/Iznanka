@@ -1,0 +1,76 @@
+---
+import { Picture } from "astro:assets";
+
+const { image, url, tag, title, content, date, unixDate } = Astro.props;
+---
+
+<a
+	class="blog-card"
+	href={url}
+	aria-label={title}
+>
+	<Picture
+		src={image}
+		formats={["avif", "webp"]}
+		alt=""
+		densities={[2, 3]}
+		quality={65}
+	/>
+	<div class="blog-card__info">
+		<p class="blog-card__tag">{tag}</p>
+		<h3 class="blog-card__title h3">{title}</h3>
+		<p class="blog-card__content">{content}</p>
+		<p class="blog-card__date"><time datetime={unixDate}>{date}</time></p>
+	</div>
+</a>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.blog-card {
+		display: flex;
+		background-color: var(--color-white-100);
+		flex-direction: column;
+		text-decoration: none;
+
+		@include hover {
+			transform: scale(1.05);
+		}
+
+		& picture,
+		& img {
+			align-self: center;
+
+			@include tablet-above {
+				width: 100%;
+			}
+		}
+
+		&__info {
+			padding: fluid-small(25, 20) fluid-small(24, 20) fluid-small(28, 22);
+		}
+
+		&__tag {
+			display: inline-flex;
+			padding: fluid-big(4, 2) fluid-big(22, 18) 4px;
+			background-color: var(--color-blue-100);
+			color: var(--color-blue-600);
+		}
+
+		&__title {
+			margin-top: fluid-big(13, 9);
+		}
+
+		&__content {
+			margin-top: fluid-big(14, 12);
+			font-size: fluid-big(16, 14);
+			line-height: 1.4;
+		}
+
+		&__date {
+			margin-top: fluid-big(18, 16);
+			font-size: fluid-big(14, 12);
+			line-height: 1.63;
+		}
+	}
+</style>

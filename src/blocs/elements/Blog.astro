@@ -1,0 +1,68 @@
+---
+import FlexLayout from "@layouts/FlexLayout.astro";
+import BlueButton from "@components/BlueButton.astro";
+import BlogCardsData from "src/data/blog-blog-cards-date.json";
+import BlogCard from "@components/BlogCard.astro";
+import BlogCardImage1 from "@images/blog-card-image-1.jpg";
+import BlogCardImage2 from "@images/blog-card-image-2.jpg";
+import BlogCardImage3 from "@images/blog-card-image-3.jpg";
+---
+
+<section
+	class="blog"
+	aria-labelledby="blog-title"
+>
+	<div class="blog__wrapper wrapper">
+		<div class="blog__info">
+			<h2
+				class="blog__title h2"
+				id="blog-title"
+			>
+				Get smarter, with our blog.
+			</h2>
+			<BlueButton
+				url="#!"
+				invert={true}
+				>See All Posts
+			</BlueButton>
+		</div>
+		<FlexLayout>
+			<BlogCard
+				image={BlogCardImage1}
+				{...BlogCardsData[0]}
+			/>
+			<BlogCard
+				image={BlogCardImage2}
+				{...BlogCardsData[1]}
+			/>
+			<BlogCard
+				image={BlogCardImage3}
+				{...BlogCardsData[2]}
+			/>
+		</FlexLayout>
+	</div>
+</section>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.blog {
+		padding-block: fluid-small(80, 40);
+		background-color: var(--color-white-200);
+
+		&__wrapper {
+			display: flex;
+			flex-direction: column;
+			gap: fluid-small(50, 24);
+		}
+
+		&__info {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			gap: 32px;
+
+			@include font-variable(22, 17, 16);
+		}
+	}
+</style>
