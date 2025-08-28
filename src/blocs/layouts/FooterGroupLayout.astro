@@ -2,13 +2,14 @@
 const { groupTitle } = Astro.props;
 ---
 
-<section
+<div
 	class="footer-group"
+	role="group"
 	aria-label={groupTitle}
 >
 	<h2 class="footer-group__title">{groupTitle}</h2>
 	<slot />
-</section>
+</div>
 
 <style lang="scss">
 	@use "@styles/helpers" as *;

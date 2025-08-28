@@ -79,6 +79,7 @@ import AccordionItemsData from "src/data/advantages-accordion-items-data.json";
 </style>
 
 <script>
+	import debounce from "../../scripts/utils/debounce";
 	var items: any[] = [];
 
 	window.addEventListener("load", () => {
@@ -87,6 +88,7 @@ import AccordionItemsData from "src/data/advantages-accordion-items-data.json";
 				items.push(buildItem(item));
 			});
 			open(items[0].rootElement, items[0].contentElement);
+			window.addEventListener("resize", debounce(remeasureOpenItem, 500));
 		});
 	});
 
@@ -130,5 +132,15 @@ import AccordionItemsData from "src/data/advantages-accordion-items-data.json";
 		setTimeout(() => {
 			rootElement.open = false;
 		}, 210);
+	}
+
+	function remeasureOpenItem() {
+		const openItem = items.find((i) => i.rootElement.open);
+		if (openItem) {
+			close(openItem.rootElement, openItem.contentElement);
+			setTimeout(() => {
+				open(openItem.rootElement, openItem.contentElement);
+			}, 300);
+		}
 	}
 </script>

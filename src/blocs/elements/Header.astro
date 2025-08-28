@@ -179,3 +179,86 @@ import { Icon } from "astro-icon/components";
 		}
 	}
 </style>
+
+<script>
+	import debounce from "../../scripts/utils/debounce";
+
+	var isOpen = false;
+	var noTransition = false;
+
+	var overlayElement: any;
+	var buttonElement: any;
+	var externalElements: any;
+
+	window.addEventListener("load", () => {
+		requestAnimationFrame(() => {
+			overlayElement = document.querySelector("[data-js-header-overlay]");
+			buttonElement = document.querySelector("[data-js-header-button]");
+			externalElements = [
+				document.querySelector("[data-js-main]"),
+				document.querySelector("[data-js-footer]"),
+				document.querySelector("[data-js-header-home-button]"),
+			];
+			matchDevice();
+			bindEvents();
+		});
+	});
+
+	function matchDevice() {
+		if (window.matchMedia("(max-width: 767px)").matches) {
+			document.documentElement.addEventListener("keydown", handleEsc);
+			buttonElement.removeAttribute("hidden");
+			overlayElement.setAttribute("tabindex", "-1");
+			overlayElement.setAttribute("role", "dialog");
+			overlayElement.setAttribute("aria-modal", "true");
+			overlayElement.setAttribute("inert", "");
+		} else {
+			document.documentElement.removeEventListener("keydown", handleEsc);
+			buttonElement.setAttribute("hidden", "");
+			overlayElement.removeAttribute("tabindex");
+			overlayElement.removeAttribute("role");
+			overlayElement.removeAttribute("aria-modal");
+			overlayElement.removeAttribute("inert");
+		}
+	}
+
+	var handleEsc = (e: any) => {
+		if (e.key === "Escape") {
+			onButtonClick();
+		}
+	};
+
+	var onButtonClick = () => {
+		isOpen = !isOpen;
+		document.documentElement.classList.toggle("is-lock");
+		buttonElement.classList.toggle("is-active");
+		overlayElement.classList.toggle("is-active");
+		buttonElement.setAttribute("title", isOpen ? "Close menu" : "Open menu");
+		buttonElement.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+		buttonElement.toggleAttribute("aria-expanded", isOpen);
+		overlayElement.toggleAttribute("inert");
+		externalElements.forEach((element: any) => {
+			element.toggleAttribute("inert");
+		});
+	};
+
+	function bindEvents() {
+		var debouncedMatchDevice = debounce(matchDevice, 1000);
+		var debouncedRemoveTransition = debounce(removeTransition, 1000);
+
+		buttonElement.addEventListener("click", onButtonClick);
+		window.addEventListener("resize", () => {
+			if (!noTransition) {
+				overlayElement.classList.add("no-transition");
+				noTransition = true;
+			}
+			debouncedMatchDevice();
+			debouncedRemoveTransition();
+		});
+	}
+
+	function removeTransition() {
+		overlayElement.classList.remove("no-transition");
+		noTransition = false;
+	}
+</script>

@@ -23,8 +23,7 @@ li {
 	list-style: none;
 }
 
-img,
-video {
+img {
 	display: block;
 	max-width: 100%;
 	height: auto;
@@ -34,38 +33,11 @@ picture {
 	display: block;
 }
 
-b,
-strong {
-	font-weight: 600;
-}
-
-fieldset,
-table,
-iframe,
-button,
-input,
-optgroup,
-select,
-textarea {
-	border: none;
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-	font: inherit;
-}
-
 button,
 input {
+	border: none;
+	font: inherit;
 	text-overflow: ellipsis;
-}
-
-button,
-select {
-	text-transform: none;
 }
 
 button,
@@ -74,35 +46,8 @@ label {
 	cursor: pointer;
 }
 
-[type="checkbox"],
-[type="radio"] {
-	box-sizing: border-box;
-	padding: 0;
-}
-
-[type="number"]::-webkit-inner-spin-button,
-[type="number"]::-webkit-outer-spin-button {
-	height: auto;
-}
-
-::-webkit-file-upload-button {
-	font: inherit;
-}
-
-legend {
-	display: table;
-	max-width: 100%;
-	color: inherit;
-	white-space: normal;
-}
-
-textarea {
-	overflow: auto;
-	resize: none;
-}
-
-address {
-	font-style: normal;
+button {
+	text-transform: none;
 }
 
 svg * {
