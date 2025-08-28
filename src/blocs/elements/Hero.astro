@@ -2,7 +2,6 @@
 import { Picture } from "astro:assets";
 import BlueButton from "@components/BlueButton.astro";
 import HeroImage from "@images/hero-image.jpg";
-import MyIcon from "@components/Icon.astro";
 import { Icon } from "astro-icon/components";
 import FlexLayout from "@layouts/FlexLayout.astro";
 import MetricCardsData from "src/data/hero-metric-cards-data.json";
@@ -30,7 +29,7 @@ import MetricCard from "@components/MetricCard.astro";
 					<a
 						class="hero__link"
 						href="#!"
-						><MyIcon type="blue-arrow">Learn more</MyIcon></a
+						>Learn more</a
 					>
 				</div>
 			</div>
@@ -44,7 +43,7 @@ import MetricCard from "@components/MetricCard.astro";
 			/>
 		</div>
 		<div class="hero__partners">
-			<p>Trusted by 50,000+ companies</p>
+			<h3 class="hero__partners-title h3">Trusted by 50,000+ companies</h3>
 			<ul class="hero__partners-list">
 				<li class="hero__partners-item">
 					<Icon
@@ -129,7 +128,19 @@ import MetricCard from "@components/MetricCard.astro";
 		}
 
 		&__link {
+			display: inline-flex;
+			align-items: center;
 			color: var(--color-blue-600);
+
+			&::after {
+				content: "";
+				width: 14px;
+				height: 21px;
+				margin-left: 5px;
+				background-image: url("/src/assets/svg/blue-arrow.svg");
+				background-repeat: no-repeat;
+				background-size: contain;
+			}
 		}
 
 		&__partners {
@@ -141,7 +152,11 @@ import MetricCard from "@components/MetricCard.astro";
 			padding-bottom: fluid-small(160, 40);
 			line-height: 1.5625;
 
-			@include font-variable(30, 24, 22);
+			&-title {
+				font-family: var(--font-family-base);
+
+				@include font-variable(30, 24, 22);
+			}
 
 			&-list {
 				display: grid;

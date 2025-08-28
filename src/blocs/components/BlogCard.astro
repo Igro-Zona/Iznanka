@@ -16,12 +16,12 @@ const { image, url, tag, title, content, date, unixDate } = Astro.props;
 		densities={[2, 3]}
 		quality={65}
 	/>
-	<div class="blog-card__info">
+	<hgroup class="blog-card__info">
 		<p class="blog-card__tag">{tag}</p>
 		<h3 class="blog-card__title h3">{title}</h3>
 		<p class="blog-card__content">{content}</p>
 		<p class="blog-card__date"><time datetime={unixDate}>{date}</time></p>
-	</div>
+	</hgroup>
 </a>
 
 <style lang="scss">
