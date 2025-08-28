@@ -1,9 +1,164 @@
 ---
-
+import FooterGroupLayout from "@layouts/FooterGroupLayout.astro";
+import FlexLayout from "@layouts/FlexLayout.astro";
+import { Icon } from "astro-icon/components";
+import GroupLayoutsData from "src/data/footer-group-layouts-data.json";
+import LinkList from "@components/LinkList.astro";
+import Newsletter from "@components/Newsletter.astro";
 ---
 
 <footer
 	class="footer"
+	aria-label="Footer"
 	data-js-footer=""
 >
+	<div class="wrapper">
+		<div class="footer__body">
+			<div class="footer__info">
+				<a
+					class="footer__logo"
+					href="/"
+					title="Home"
+					aria-label="Home"
+					data-js-header-home-button=""
+				>
+					<Icon
+						name="logo"
+						width={135}
+						height={47}
+						role="img"
+						aria-label="Whirl Logo"
+					/></a
+				>
+				<div class="footer__info-inner">
+					<p>
+						Built by <a href="#!">Nikolai Bain</a>.
+					</p>
+					<p>
+						Powered by <a href="#!">Webflow</a>.
+					</p>
+				</div>
+			</div>
+			<FlexLayout g16={true}>
+				<FooterGroupLayout groupTitle="Info"><LinkList {...GroupLayoutsData[0]} /></FooterGroupLayout>
+				<FooterGroupLayout groupTitle="Admin"><LinkList {...GroupLayoutsData[1]} /></FooterGroupLayout>
+				<FooterGroupLayout groupTitle="Newsletter"><Newsletter {...GroupLayoutsData[2]} /></FooterGroupLayout>
+			</FlexLayout>
+		</div>
+		<div class="footer__extras">
+			<p class="footer__extras-content">
+				© 2022 Whirl. All Rights Reserved. Illustrations by <a href="#!">Streamline</a>.
+			</p>
+			<ul
+				class="footer__extras-list"
+				aria-label="Our Social Media"
+			>
+				<li>
+					<a
+						href="#!"
+						aria-label="Twitter"
+						title="Twitter"
+					>
+						<Icon
+							name="twitter"
+							width={30}
+							height={30}
+							role="img"
+							aria-label="Our Twitter"
+						/></a
+					>
+				</li>
+				<li>
+					<a
+						href="#!"
+						aria-label="LinkedIn"
+						title="LinkedIn"
+					>
+						<Icon
+							name="linkedin"
+							width={30}
+							height={30}
+							role="img"
+							aria-label="Our LinkedIn"
+						/></a
+					>
+				</li>
+				<li>
+					<a
+						href="#!"
+						aria-label="Facebook"
+						title="Facebook"
+					>
+						<Icon
+							name="facebook"
+							width={30}
+							height={30}
+							role="img"
+							aria-label="Our Facebook"
+						/></a
+					>
+				</li>
+			</ul>
+		</div>
+	</div>
 </footer>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.footer {
+		&__body {
+			display: flex;
+			justify-content: space-between;
+			gap: fluid-small(312, 16);
+			border-bottom: 1px solid var(--color-black-400);
+			padding-block: 40px fluid-small(70, 40);
+
+			@include tablet {
+				gap: 16px;
+				flex-direction: column;
+			}
+		}
+
+		&__info {
+			display: flex;
+			flex-direction: column;
+			row-gap: 20px;
+
+			&-inner a {
+				color: var(--color-blue-600);
+			}
+		}
+
+		&__logo {
+			display: inline-flex;
+		}
+
+		&__extras {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			gap: 10px 32px;
+			padding-block: fluid-small(34, 24);
+
+			&-content {
+				line-height: 1.4;
+
+				& a {
+					color: var(--color-blue-600);
+				}
+			}
+
+			&-list {
+				display: inline-flex;
+				gap: 20px;
+				align-self: center;
+
+				& li,
+				& a {
+					display: inline-flex;
+				}
+			}
+		}
+	}
+</style>

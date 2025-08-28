@@ -1,0 +1,27 @@
+---
+const { groupTitle } = Astro.props;
+---
+
+<section
+	class="footer-group"
+	aria-label={groupTitle}
+>
+	<h2 class="footer-group__title">{groupTitle}</h2>
+	<slot />
+</section>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.footer-group {
+		display: flex;
+		flex-direction: column;
+		align-self: stretch;
+		gap: fluid-small(16, 14);
+
+		&__title {
+			font-size: 16px;
+			font-weight: 400;
+		}
+	}
+</style>

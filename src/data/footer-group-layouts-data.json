@@ -1,0 +1,61 @@
+[
+	{
+		"links": [
+			{
+				"name": "Features",
+				"url": "#!"
+			},
+			{
+				"name": "Pricing",
+				"url": "#!"
+			},
+			{
+				"name": "Blog",
+				"url": "#!"
+			},
+			{
+				"name": "Support",
+				"url": "#!"
+			},
+			{
+				"name": "Terms & Conditions",
+				"url": "#!"
+			},
+			{
+				"name": "Privacy Policy",
+				"url": "#!"
+			}
+		]
+	},
+	{
+		"links": [
+			{
+				"name": "Style Guide",
+				"url": "#!"
+			},
+			{
+				"name": "Licenses",
+				"url": "#!"
+			},
+			{
+				"name": "Instructions",
+				"url": "#!"
+			},
+			{
+				"name": "Changelog",
+				"url": "#!"
+			},
+			{
+				"name": "Password",
+				"url": "#!"
+			},
+			{
+				"name": "404",
+				"url": "#!"
+			}
+		]
+	},
+	{
+		"content": "Sign up for the latest news, company insights, and Whirl updates."
+	}
+]

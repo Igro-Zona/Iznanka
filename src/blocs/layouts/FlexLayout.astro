@@ -1,8 +1,9 @@
 ---
-
+const { g16 = false } = Astro.props;
+const className = g16 ? "flex flex--g16" : "flex";
 ---
 
-<div class="flex">
+<div class={className}>
 	<slot />
 </div>
 
@@ -17,6 +18,10 @@
 
 		@include tablet {
 			flex-direction: column;
+		}
+
+		&--g16 {
+			gap: 16px;
 		}
 	}
 

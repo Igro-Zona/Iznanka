@@ -1,0 +1,30 @@
+---
+const { links } = Astro.props;
+---
+
+<ul class="link-list">
+	{
+		links.map((link: any) => (
+			<li class="link-list__item">
+				<a href={link.url}>{link.name}</a>
+			</li>
+		))
+	}
+</ul>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.link-list {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		&__item {
+			text-wrap: nowrap;
+			color: var(--color-black-400);
+			font-size: 14px;
+			line-height: 1.4;
+		}
+	}
+</style>
