@@ -1,0 +1,75 @@
+---
+import BlueButton from "@components/BlueButton.astro";
+---
+
+<section
+	class="promo"
+	aria-labelledby="promo-title"
+>
+	<div class="wrapper">
+		<div class="promo__body">
+			<div>
+				<h2
+					class="promo__title h2"
+					id="promo-title"
+				>
+					Get started with Whirl
+				</h2>
+				<p class="promo__content">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+				</p>
+			</div>
+			<div>
+				<BlueButton url="#!">Book a demo</BlueButton>
+				<ul class="promo__list">
+					<li class="promo__item">Free 30-day trial</li>
+					<li class="promo__item">No credit-card required</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style lang="scss">
+	@use "@styles/helpers" as *;
+
+	.promo {
+		padding-block: fluid-small(80, 40);
+
+		&__body {
+			display: flex;
+			flex-direction: column;
+			gap: fluid-small(36, 24);
+			padding: fluid-small(64, 28);
+			background-color: var(--color-blue-100);
+		}
+
+		&__content {
+			max-width: 500px;
+			margin-top: fluid-small(21, 18);
+
+			@include font-medium;
+		}
+
+		&__list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px 32px;
+			margin-top: 20px;
+			font-size: 14px;
+		}
+
+		&__item {
+			text-wrap: nowrap;
+			display: flex;
+			color: var(--color-black-400);
+
+			&::before {
+				content: "";
+				background: url("/src/assets/svg/grey-arrow.svg") no-repeat center;
+
+				@include square(21px);
+			}
+		}
+	}
+</style>
