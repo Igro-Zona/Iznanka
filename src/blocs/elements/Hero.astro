@@ -43,7 +43,7 @@ import MetricCard from "@components/MetricCard.astro";
 			/>
 		</div>
 		<div class="hero__partners">
-			<h3 class="hero__partners-title h3">Trusted by 50,000+ companies</h3>
+			<p>Trusted by 50,000+ companies</p>
 			<ul class="hero__partners-list">
 				<li class="hero__partners-item">
 					<Icon
@@ -152,11 +152,7 @@ import MetricCard from "@components/MetricCard.astro";
 			padding-bottom: fluid-small(160, 40);
 			line-height: 1.5625;
 
-			&-title {
-				font-family: var(--font-family-base);
-
-				@include font-variable(30, 24, 22);
-			}
+			@include font-variable(28, 24, 22);
 
 			&-list {
 				display: grid;
