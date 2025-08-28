@@ -242,13 +242,14 @@ import { Icon } from "astro-icon/components";
 		});
 	};
 
+	var lastWidth = window.innerWidth;
+
 	function bindEvents() {
 		var debouncedMatchDevice = debounce(matchDevice, 1000);
 		var debouncedRemoveTransition = debounce(removeTransition, 1000);
 
 		buttonElement.addEventListener("click", onButtonClick);
 		window.addEventListener("resize", () => {
-			var lastWidth = window.innerWidth;
 			if (window.innerWidth !== lastWidth) {
 				lastWidth = window.innerWidth;
 				if (!noTransition) {

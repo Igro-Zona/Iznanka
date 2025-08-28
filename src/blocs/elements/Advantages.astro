@@ -134,8 +134,8 @@ import AccordionItemsData from "src/data/advantages-accordion-items-data.json";
 		}, 210);
 	}
 
+	var lastWidth = window.innerWidth;
 	function remeasureOpenItem() {
-		var lastWidth = window.innerWidth;
 		var openItem = items.find((i) => i.rootElement.open);
 		if (window.innerWidth !== lastWidth) {
 			lastWidth = window.innerWidth;
