@@ -1,5 +1,4 @@
 /** @type {import('stylelint').Config} */
-//  Файл конфигурации Stylelint от Igro-Zona
 export default {
 	// 'stylelint-scss' - плагин с правилами для линтинга SCSS, 'stylelint-order' - плагин для сортировки свойств
 	plugins: ["stylelint-scss", "stylelint-order"],
