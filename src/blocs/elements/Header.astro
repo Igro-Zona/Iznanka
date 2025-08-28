@@ -248,12 +248,16 @@ import { Icon } from "astro-icon/components";
 
 		buttonElement.addEventListener("click", onButtonClick);
 		window.addEventListener("resize", () => {
-			if (!noTransition) {
-				overlayElement.classList.add("no-transition");
-				noTransition = true;
+			var lastWidth = window.innerWidth;
+			if (window.innerWidth !== lastWidth) {
+				lastWidth = window.innerWidth;
+				if (!noTransition) {
+					overlayElement.classList.add("no-transition");
+					noTransition = true;
+				}
+				debouncedMatchDevice();
+				debouncedRemoveTransition();
 			}
-			debouncedMatchDevice();
-			debouncedRemoveTransition();
 		});
 	}
 

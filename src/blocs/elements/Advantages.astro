@@ -135,12 +135,16 @@ import AccordionItemsData from "src/data/advantages-accordion-items-data.json";
 	}
 
 	function remeasureOpenItem() {
-		const openItem = items.find((i) => i.rootElement.open);
-		if (openItem) {
-			close(openItem.rootElement, openItem.contentElement);
-			setTimeout(() => {
-				open(openItem.rootElement, openItem.contentElement);
-			}, 300);
+		var lastWidth = window.innerWidth;
+		var openItem = items.find((i) => i.rootElement.open);
+		if (window.innerWidth !== lastWidth) {
+			lastWidth = window.innerWidth;
+			if (openItem) {
+				close(openItem.rootElement, openItem.contentElement);
+				setTimeout(() => {
+					open(openItem.rootElement, openItem.contentElement);
+				}, 300);
+			}
 		}
 	}
 </script>
