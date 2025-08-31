@@ -9,7 +9,7 @@ import icon from "astro-icon";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
-	site: "https://iznanka.netlify.app/",
+	site: "https://whirltasks.netlify.app",
 	base: "/",
 	integrations: [
 		sitemap(),
